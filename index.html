@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chika Precious Benjamin - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.0/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        .role-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900" x-data="portfolio()">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-gray-800">Chika Precious Benjamin</div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-purple-600 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-purple-600 transition-colors">About</a>
+                    <a href="#experience" class="hover:text-purple-600 transition-colors">Experience</a>
+                    <a href="#specializations" class="hover:text-purple-600 transition-colors">Specializations</a>
+                    <a href="#projects" class="hover:text-purple-600 transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-purple-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden" @click="mobileMenuOpen = !mobileMenuOpen">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" x-transition class="md:hidden mt-4 pb-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-purple-600 transition-colors">Home</a>
+                <a href="#about" class="block py-2 hover:text-purple-600 transition-colors">About</a>
+                <a href="#experience" class="block py-2 hover:text-purple-600 transition-colors">Experience</a>
+                <a href="#specializations" class="block py-2 hover:text-purple-600 transition-colors">Specializations</a>
+                <a href="#projects" class="block py-2 hover:text-purple-600 transition-colors">Projects</a>
+                <a href="#contact" class="block py-2 hover:text-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Chika Benjamin</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Full Stack Software Developer & Technical Leader</p>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto opacity-80">
+                    5+ years building scalable web applications, mobile apps, and leading development teams. 
+                    Specialized in Python, Django, FastAPI, JavaScript, and cloud technologies.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                        Let's Connect
+                    </a>
+                </div>
+                <div class="mt-12 flex justify-center space-x-6">
+                    <a href="https://github.com/pre22" class="text-white hover:text-gray-200 text-2xl transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/precious-chika-benjamin/" class="text-white hover:text-gray-200 text-2xl transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:pre.chika.22@gmail.com" class="text-white hover:text-gray-200 text-2xl transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Professional Overview</h3>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        I'm a results-driven Full Stack Developer with over 5 years of experience building scalable 
+                        applications that serve hundreds of users. Currently working as a Backend Developer specializing 
+                        in Python and FastAPI, I've successfully led development teams and delivered high-quality 
+                        software solutions across various industries.
+                    </p>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        My expertise spans the entire development lifecycle - from system architecture design to 
+                        deployment and monitoring. I'm passionate about writing clean, maintainable code and 
+                        implementing best practices that drive business growth.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm font-medium">5+ Years Experience</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm font-medium">500+ Users Served</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm font-medium">Team Leadership</span>
+                        <span class="tech-tag px-3 py-1 rounded-full text-sm font-medium">Remote Work Expert</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg text-center">
+                        <i class="fas fa-code text-3xl text-purple-600 mb-4"></i>
+                        <h4 class="font-semibold mb-2">Backend Expert</h4>
+                        <p class="text-sm text-gray-600">Python, Django, FastAPI, REST APIs</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg text-center">
+                        <i class="fas fa-palette text-3xl text-purple-600 mb-4"></i>
+                        <h4 class="font-semibold mb-2">Frontend Skilled</h4>
+                        <p class="text-sm text-gray-600">Vue.js, JavaScript, Modern CSS</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg text-center">
+                        <i class="fas fa-users text-3xl text-purple-600 mb-4"></i>
+                        <h4 class="font-semibold mb-2">Team Leader</h4>
+                        <p class="text-sm text-gray-600">Agile, Mentoring, Code Reviews</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg text-center">
+                        <i class="fas fa-cloud text-3xl text-purple-600 mb-4"></i>
+                        <h4 class="font-semibold mb-2">Cloud & DevOps</h4>
+                        <p class="text-sm text-gray-600">AWS, Docker, Linux, Monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Professional Experience</h2>
+            <div class="space-y-8">
+                <!-- Current Role -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Backend Developer (Current)</h3>
+                            <p class="text-lg font-semibold">Python & FastAPI Specialist</p>
+                            <p class="text-gray-600">2024 - Present</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">FastAPI</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">APIs</span>
+                        </div>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Developing high-performance backend services using Python and FastAPI</li>
+                        <li>• Designing and implementing scalable API architectures</li>
+                        <li>• Optimizing database performance and system reliability</li>
+                        <li>• Collaborating with cross-functional teams in agile environment</li>
+                    </ul>
+                </div>
+
+                <!-- Previous Roles -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Full Stack Software Developer</h3>
+                            <p class="text-lg font-semibold">Everest | Port Harcourt, Nigeria</p>
+                            <p class="text-gray-600">May 2023 – Present</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">FastAPI</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Microservices</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Team Lead</span>
+                        </div>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Develop REST APIs for mobile and web applications serving 500+ users</li>
+                        <li>• Design backend architecture and implement microservices</li>
+                        <li>• Built responsive company website improving user engagement by 40%</li>
+                        <li>• Optimized database queries reducing response times by 30%</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Senior Software Developer</h3>
+                            <p class="text-lg font-semibold">100PAY | USA (Remote)</p>
+                            <p class="text-gray-600">February 2024 – January 2025</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">WordPress</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Trading Bots</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Mentoring</span>
+                        </div>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Developed custom WordPress plugins for 200+ users</li>
+                        <li>• Designed algorithmic trading bots improving efficiency by 25%</li>
+                        <li>• Integrated real-time market data APIs</li>
+                        <li>• Mentored junior developers and conducted code reviews</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Technical Project Manager</h3>
+                            <p class="text-lg font-semibold">Multiple Companies</p>
+                            <p class="text-gray-600">2022 – 2023</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Agile</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Scrum</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Team Leadership</span>
+                        </div>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Led development teams of 8+ developers in Agile environments</li>
+                        <li>• Achieved 95% quality standards on sprint deliverables</li>
+                        <li>• Improved team efficiency by 20% through process optimization</li>
+                        <li>• Onboarded 5+ new team members successfully</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section id="specializations" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Role Specializations</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('backend')">
+                    <i class="fas fa-server text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Backend Engineer</h3>
+                    <p class="text-gray-600 mb-6">API development, microservices, database optimization, cloud deployment</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">FastAPI</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Django</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('fullstack')">
+                    <i class="fas fa-layer-group text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Full Stack Developer</h3>
+                    <p class="text-gray-600 mb-6">End-to-end application development, frontend-backend integration</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Vue.js</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Django</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('frontend')">
+                    <i class="fas fa-paint-brush text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Frontend Engineer</h3>
+                    <p class="text-gray-600 mb-6">Responsive UI/UX, modern frameworks, user experience optimization</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Vue.js</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">CSS3</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Alpine.js</span>
+                    </div>
+                </div>
+
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('technical-lead')">
+                    <i class="fas fa-users-cog text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Technical Lead</h3>
+                    <p class="text-gray-600 mb-6">Team leadership, architecture decisions, mentoring, code reviews</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Agile</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Mentoring</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Architecture</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Code Review</span>
+                    </div>
+                </div>
+
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('devops')">
+                    <i class="fas fa-cloud text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">DevOps Engineer</h3>
+                    <p class="text-gray-600 mb-6">Cloud deployment, containerization, monitoring, CI/CD pipelines</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">AWS</span>
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Docker</span>
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Linux</span>
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Grafana</span>
+                    </div>
+                </div>
+
+                <div class="role-card p-8 rounded-lg card-hover cursor-pointer" @click="showRoleDetails('project-manager')">
+                    <i class="fas fa-tasks text-4xl text-purple-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Technical PM</h3>
+                    <p class="text-gray-600 mb-6">Project planning, sprint management, stakeholder communication</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Scrum</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Notion</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">ClickUp</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Agile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="mb-4">
+                        <i class="fas fa-chart-line text-3xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Algorithmic Trading System</h3>
+                        <p class="text-gray-600 mb-4">Real-time trading bot with market data integration, improving efficiency by 25%</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">APIs</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Real-time</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/pre22" class="text-gray-600 hover:text-gray-800">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="mb-4">
+                        <i class="fas fa-shopping-cart text-3xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">Full-stack e-commerce solution with payment integration and admin dashboard</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Django</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Vue.js</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">PostgreSQL</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/pre22" class="text-gray-600 hover:text-gray-800">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="mb-4">
+                        <i class="fas fa-file-invoice text-3xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Invoice Management System</h3>
+                        <p class="text-gray-600 mb-4">Web application for invoice management with Vue.js frontend and Django backend</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Vue.js</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Django REST</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Figma</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/pre22" class="text-gray-600 hover:text-gray-800">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/pre22" class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i>
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Skills & Technologies</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Frontend</h3>
+                    <div class="space-y-3">
+                        <div class="bg-green-100 text-green-800 py-2 px-4 rounded-lg">JavaScript</div>
+                        <div class="bg-green-100 text-green-800 py-2 px-4 rounded-lg">Vue.js</div>
+                        <div class="bg-green-100 text-green-800 py-2 px-4 rounded-lg">Next.js</div>
+                        <div class="bg-green-100 text-green-800 py-2 px-4 rounded-lg">Alpine.js</div>
+                        <div class="bg-green-100 text-green-800 py-2 px-4 rounded-lg">TailwindCSS</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Backend</h3>
+                    <div class="space-y-3">
+                        <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Python</div>
+                        <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Django</div>
+                        <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">FastAPI</div>
+                        <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Node.js</div>
+                        <div class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">PostgreSQL</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Cloud & DevOps</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-100 text-red-800 py-2 px-4 rounded-lg">AWS</div>
+                        <div class="bg-red-100 text-red-800 py-2 px-4 rounded-lg">Docker</div>
+                        <div class="bg-red-100 text-red-800 py-2 px-4 rounded-lg">Linux</div>
+                        <div class="bg-red-100 text-red-800 py-2 px-4 rounded-lg">Grafana</div>
+                        <div class="bg-red-100 text-red-800 py-2 px-4 rounded-lg">Prometheus</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6">Tools & Others</h3>
+                    <div class="space-y-3">
+                        <div class="bg-purple-100 text-purple-800 py-2 px-4 rounded-lg">Git</div>
+                        <div class="bg-purple-100 text-purple-800 py-2 px-4 rounded-lg">REST APIs</div>
+                        <div class="bg-purple-100 text-purple-800 py-2 px-4 rounded-lg">Agile/Scrum</div>
+                        <div class="bg-purple-100 text-purple-800 py-2 px-4 rounded-lg">WebSocket</div>
+                        <div class="bg-purple-100 text-purple-800 py-2 px-4 rounded-lg">RabbitMQ</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Articles -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Latest Articles</h2>
+            <div class="text-center">
+                <p class="text-lg text-gray-600 mb-8">
+                    I regularly share insights about software development, best practices, and industry trends on my blog.
+                </p>
+                <a href="https://dev.to/pre22" class="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center">
+                    <i class="fab fa-dev mr-2"></i>
+                    Read My Articles on Dev.to
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">Let's Work Together</h2>
+            <p class="text-lg text-gray-600 mb-12">
+                I'm available for freelance projects, contract work, and full-time remote positions. 
+                Let's discuss how I can help bring your project to life.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <i class="fas fa-envelope text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Email</h3>
+                    <a href="mailto:pre.chika.22@gmail.com" class="text-gray-600 hover:text-purple-600">pre.chika.22@gmail.com</a>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-linkedin text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="font-semibold mb-2">LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/precious-chika-benjamin/" class="text-gray-600 hover:text-purple-600">Connect with me</a>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-phone text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Phone</h3>
+                    <a href="tel:+234-708-653-8710" class="text-gray-600 hover:text-purple-600">+234-708-653-8710</a>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-8 rounded-lg">
+                <h3 class="text-xl font-semibold mb-6">Available For:</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-left">
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Freelance & Contract Projects</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Full-time Remote Positions</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Technical Consulting</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Team Leadership Roles</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Mid to Senior Level Positions</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Cross-Industry Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4">Chika Precious Benjamin</h3>
+                <p class="text-gray-400 mb-6">Full Stack Software Developer & Technical Leader</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://github.com/pre22" class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/precious-chika-benjamin/" class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://dev.to/pre22" class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fab fa-dev"></i>
+                    </a>
+                    <a href="mailto:pre.chika.22@gmail.com" class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-400">&copy; 2025 Chika Precious Benjamin. Available for exciting opportunities worldwide.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Role Details Modal -->
+    <div x-show="showModal" x-transition class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" @click.away="showModal = false">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold" x-text="modalContent.title"></h3>
+                <button @click="showModal = false" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="mb-6">
+                <h4 class="font-semibold mb-3">Key Responsibilities:</h4>
+                <ul class="space-y-2" x-html="modalContent.responsibilities"></ul>
+            </div>
+            <div class="mb-6">
+                <h4 class="font-semibold mb-3">Core Technologies:</h4>
+                <div class="flex flex-wrap gap-2" x-html="modalContent.technologies"></div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-3">Experience Highlights:</h4>
+                <ul class="space-y-2" x-html="modalContent.highlights"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function portfolio() {
+            return {
+                mobileMenuOpen: false,
+                showModal: false,
+                modalContent: {},
+                
+                roleDetails: {
+                    backend: {
+                        title: 'Backend Engineer',
+                        responsibilities: `
+                            <li>• Design and develop scalable REST APIs and microservices</li>
+                            <li>• Optimize database performance and query efficiency</li>
+                            <li>• Implement authentication and authorization systems</li>
+                            <li>• Design system architecture for high-traffic applications</li>
+                            <li>• Integrate third-party APIs and services</li>
+                            <li>• Monitor system performance and troubleshoot issues</li>
+                        `,
+                        technologies: `
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Django</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">FastAPI</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Redis</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Celery</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">RabbitMQ</span>
+                        `,
+                        highlights: `
+                            <li>• Built APIs serving 500+ users with 30% performance improvement</li>
+                            <li>• Designed microservices architecture for scalable applications</li>
+                            <li>• Reduced API response times by optimizing database queries</li>
+                            <li>• Implemented real-time data processing systems</li>
+                        `
+                    },
+                    fullstack: {
+                        title: 'Full Stack Developer',
+                        responsibilities: `
+                            <li>• Develop end-to-end web applications with modern frameworks</li>
+                            <li>• Create responsive and interactive user interfaces</li>
+                            <li>• Build and integrate backend APIs with frontend components</li>
+                            <li>• Implement user authentication and authorization</li>
+                            <li>• Optimize application performance and user experience</li>
+                            <li>• Deploy applications to cloud platforms</li>
+                        `,
+                        technologies: `
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Django</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">TailwindCSS</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">REST APIs</span>
+                        `,
+                        highlights: `
+                            <li>• Built responsive company website improving engagement by 40%</li>
+                            <li>• Developed invoice management system with Vue.js and Django</li>
+                            <li>• Created desktop applications using PyQt5</li>
+                            <li>• Integrated payment systems and third-party services</li>
+                        `
+                    },
+                    frontend: {
+                        title: 'Frontend Engineer',
+                        responsibilities: `
+                            <li>• Build responsive and accessible user interfaces</li>
+                            <li>• Implement modern JavaScript frameworks and libraries</li>
+                            <li>• Optimize web performance and loading times</li>
+                            <li>• Collaborate with designers to implement pixel-perfect designs</li>
+                            <li>• Ensure cross-browser compatibility</li>
+                            <li>• Implement interactive features and animations</li>
+                        `,
+                        technologies: `
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Next.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Alpine.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">TailwindCSS</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">HTML5</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">CSS3</span>
+                        `,
+                        highlights: `
+                            <li>• Translated Figma designs into responsive components</li>
+                            <li>• Built intuitive user interfaces for FinTech applications</li>
+                            <li>• Implemented user-centered navigation flows</li>
+                            <li>• Collaborated with senior developers on component architecture</li>
+                        `
+                    },
+                    'technical-lead': {
+                        title: 'Technical Lead',
+                        responsibilities: `
+                            <li>• Lead development teams and mentor junior developers</li>
+                            <li>• Make architectural decisions and define technical standards</li>
+                            <li>• Conduct code reviews and ensure quality standards</li>
+                            <li>• Collaborate with stakeholders on technical requirements</li>
+                            <li>• Plan technical roadmaps and sprint deliverables</li>
+                            <li>• Facilitate knowledge sharing and team development</li>
+                        `,
+                        technologies: `
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Team Leadership</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Mentoring</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Architecture</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Code Review</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Agile</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Scrum</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Technical Planning</span>
+                        `,
+                        highlights: `
+                            <li>• Led development teams of 8+ developers</li>
+                            <li>• Mentored junior developers and conducted code reviews</li>
+                            <li>• Improved team efficiency by 20% through process optimization</li>
+                            <li>• Successfully onboarded 5+ new team members</li>
+                        `
+                    },
+                    devops: {
+                        title: 'DevOps Engineer',
+                        responsibilities: `
+                            <li>• Deploy and manage applications on cloud platforms</li>
+                            <li>• Set up monitoring and alerting systems</li>
+                            <li>• Containerize applications using Docker</li>
+                            <li>• Configure CI/CD pipelines for automated deployment</li>
+                            <li>• Manage server infrastructure and security</li>
+                            <li>• Optimize system performance and resource utilization</li>
+                        `,
+                        technologies: `
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">AWS</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">VPS</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Grafana</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Prometheus</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Node Exporter</span>
+                        `,
+                        highlights: `
+                            <li>• Deployed scalable applications serving 500+ users</li>
+                            <li>• Set up comprehensive monitoring and alerting systems</li>
+                            <li>• Containerized applications for consistent deployment</li>
+                            <li>• Managed cloud infrastructure and security protocols</li>
+                        `
+                    },
+                    'project-manager': {
+                        title: 'Technical Project Manager',
+                        responsibilities: `
+                            <li>• Plan and organize Agile sprints with clear goals and timelines</li>
+                            <li>• Facilitate communication between stakeholders and development teams</li>
+                            <li>• Track project progress and ensure quality deliverables</li>
+                            <li>• Lead daily standups and sprint retrospectives</li>
+                            <li>• Manage resource allocation and project prioritization</li>
+                            <li>• Support team onboarding and workflow optimization</li>
+                        `,
+                        technologies: `
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Scrum</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Agile</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Notion</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">ClickUp</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Whimsical</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Sprint Planning</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Stakeholder Management</span>
+                        `,
+                        highlights: `
+                            <li>• Achieved 95% quality standards on sprint deliverables</li>
+                            <li>• Led teams of 8+ developers in multiple companies</li>
+                            <li>• Improved team efficiency by 20% through process optimization</li>
+                            <li>• Successfully managed concurrent projects and resources</li>
+                        `
+                    }
+                },
+                
+                showRoleDetails(role) {
+                    this.modalContent = this.roleDetails[role];
+                    this.showModal = true;
+                }
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+                    
